@@ -1,0 +1,23 @@
+
+<h3>Listadp de heroes</h3>
+<div *ngIf="deletedHero; else nothingWasDeleted">
+  <h3>Heroe Borrado <small class="text-danger"> {{deletedHero}} </small> </h3>
+</div>
+<!-- ng tamplate es un agrupador como un div que no se construlle  -->
+<ng-template #nothingWasDeleted>
+<h3 *ngIf="!deletedHero">no ha borrado nada</h3>
+</ng-template>
+
+<button
+*ngIf="heroNames.length > 0"
+(click)="removeLastHero()" class="btn btn-outline-danger">
+  Borra el ultimo heroe
+</button>
+
+
+  <!-- clona el li en funcion del arreglo (heroNames) -->
+<ul class="mt-2 list-group">
+  <li *ngFor="let name of heroNames"
+  class="list-group-item">{{name}}</li>
+
+</ul>
